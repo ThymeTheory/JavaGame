@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename resource &apos;Test/src/com/ThymeTheory/Test/graphics/screen.java&apos; to &apos;Screen.java&apos;" description="Rename resource &apos;screen.java&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/com/ThymeTheory/Test/graphics/screen.java" name="Screen.java" stamp="1379014606853" updateReferences="true"/>
-</session>

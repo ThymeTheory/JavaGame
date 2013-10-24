@@ -1,0 +1,7 @@
+package com.ThymeTheory.entity.projectile;
+
+import com.ThymeTheory.entity.Entity;
+
+public class Projectile extends Entity {
+
+}

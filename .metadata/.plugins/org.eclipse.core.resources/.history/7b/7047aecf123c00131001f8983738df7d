@@ -1,0 +1,9 @@
+package com.ThymeTheory.entity.projectile;
+
+import com.ThymeTheory.Rayne.graphics.Sprite;
+import com.ThymeTheory.entity.Entity;
+
+public class WizardProjectile extends Projectile {
+	
+
+}

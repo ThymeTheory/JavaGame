@@ -17,4 +17,7 @@ public class SpawnBricksTile extends Tile {
 	public boolean solid() {
 		return true;		
 	}
+	public boolean Psolid() {
+		return true;		
+	}
 }

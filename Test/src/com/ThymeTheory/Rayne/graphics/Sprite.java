@@ -4,6 +4,7 @@ public class Sprite {
 	
 	public final int SIZE;
 	private int x, y;
+	private int width, height;
 	public int[] pixels;
 	private SpriteSheet sheet;
 	
@@ -38,6 +39,11 @@ public class Sprite {
 	public static Sprite spawn_colorwall = new Sprite(16, 0, 2, SpriteSheet.spawn_level);
 	public static Sprite spawn_woodfloor = new Sprite(16, 1, 1, SpriteSheet.spawn_level);
 
+	public static Sprite spawn_tree1 = new Sprite(16, 0, 4, SpriteSheet.spawn_level);
+	public static Sprite spawn_tree2 = new Sprite(16, 0, 5, SpriteSheet.spawn_level);
+	public static Sprite spawn_tree3 = new Sprite(16, 1, 4, SpriteSheet.spawn_level);
+	public static Sprite spawn_tree4 = new Sprite(16, 1, 5, SpriteSheet.spawn_level);
+
 	
 
 	
@@ -60,7 +66,8 @@ public class Sprite {
 	
 	public static Sprite wizard = new Sprite (16, 0, 0, SpriteSheet.projectile_wizard);
 
-
+	// Particles
+	public static Sprite particle_normal = new Sprite(3, 0xAAAAAA);
 
 
 	
@@ -69,6 +76,8 @@ public class Sprite {
 	
 	public Sprite(int size, int x, int y, SpriteSheet sheet) {
 		SIZE = size;
+		this.width = size;
+		this.height = size;
 		pixels = new int[SIZE * SIZE];
 		this.x = x * size;
 		this.y = y * size;
@@ -76,16 +85,34 @@ public class Sprite {
 		load();
 	}
 	
+	public Sprite(int width, int height, int colour) {
+		SIZE = -1;
+		this.width = width;
+		this.height = height;
+		pixels = new int[width* height];
+		setColour(colour);
+	}
+	
 	public Sprite(int size, int colour) {
 		SIZE = size;
+		this.width = size;
+		this.height = size;
 		pixels = new int[SIZE * SIZE];
 		setColour(colour);		
 	}
 	
 	private void setColour(int colour) {
-		for (int i = 0; i < SIZE * SIZE; i++) {
+		for (int i = 0; i < width * height; i++) {
 			pixels[i] = colour;
 		}
+	}
+	
+	public int getWidth() {
+		return width;
+	}
+	
+	public int getHeight() {
+		return height;
 	}
 
 	private void load() {

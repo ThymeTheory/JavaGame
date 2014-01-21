@@ -3,13 +3,15 @@ package com.ThymeTheory.Rayne.level;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import com.ThymeTheory.Rayne.graphics.Screen;
 import com.ThymeTheory.Rayne.level.tile.Tile;
 import com.ThymeTheory.entity.Entity;
+import com.ThymeTheory.entity.projectile.Projectile;
 
 public class Level {
 	
-	public int MapSize = 75;
+	public int MapSize = 512;
 	public static int tilesize = 16;
 	
 	protected int width, height;
@@ -18,7 +20,9 @@ public class Level {
 	
 	private List<Entity> entities = new ArrayList<Entity>();
 	
-	public static Level spawn = new SpawnLevel("/levels/Spawn.png");
+	public List<Projectile> projectiles = new ArrayList<Projectile>();
+
+	public static Level spawn = new SpawnLevel("/levels/Spawn_Dungeon.png");
 	
 	
 	public Level(int width, int height) {
@@ -47,10 +51,28 @@ public class Level {
 		for (int i=0; i < entities.size(); i++) {		
 			entities.get(i).update();
 	}
+		for (int i=0; i < projectiles.size(); i++) {
+			projectiles.get(i).update();
+			}
+
 	}
 	
-	//private void time() {		
-	//}
+	public List<Projectile> getProjectiles() {
+		return projectiles;
+	}
+	
+	private void time() {		
+	}
+	
+	public boolean tileCollision(double x, double y, double xa, double ya, int size) {
+		boolean Psolid = false;
+		for (int c = 0; c < 4; c++) {
+			int xt = (((int)x + (int)xa) + c % 2 * size * 2 - 6) / 16;
+		    int yt = (((int)y + (int)ya) + c / 2 * size + 2) / 16;
+		if (getTile(xt, yt).Psolid()) Psolid = true;
+		}
+		return Psolid;
+		}
 	
 	public void render(int xScroll, int yScroll, Screen screen) {
 		screen.setOffset(xScroll, yScroll);
@@ -68,10 +90,21 @@ public class Level {
 		for (int i=0; i < entities.size(); i++) {
 		entities.get(i).render(screen);
 		}
+		for (int i=0; i < projectiles.size(); i++) {
+			projectiles.get(i).render(screen);
+			}
+
 	}
-	
+
 	public void add(Entity e) {
 		entities.add(e);
+	}
+	
+	
+	public void addProjectile(Projectile p) {
+		p.init(this);
+		projectiles.add(p);
+		
 	}
 	
 	
@@ -93,6 +126,11 @@ public class Level {
 		if (tiles[x + y * width] == Tile.col_s_water) return Tile.S_water;
 		if (tiles[x + y * width] == Tile.col_s_grass) return Tile.S_grass;
 		if (tiles[x + y * width] == Tile.col_s_stone) return Tile.S_stone;
+		
+		if (tiles[x + y * width] == Tile.col_s_tree1) return Tile.S_tree1;
+		if (tiles[x + y * width] == Tile.col_s_tree2) return Tile.S_tree2;
+		if (tiles[x + y * width] == Tile.col_s_tree3) return Tile.S_tree3;
+		if (tiles[x + y * width] == Tile.col_s_tree4) return Tile.S_tree4;
 
 		/*if (tiles[x + y * width] == 0xFF00FF00) return Tile.grass;
 		if (tiles[x + y * width] == 0xFFFFFF00) return Tile.sand;
@@ -117,7 +155,7 @@ public class Level {
 		if (tiles[x + y * width] == 0xFF7F006E) return Tile.Pflower;*/
 
 
-		return Tile.voidTile;
+		return Tile.S_water;
 		
 	}
 		

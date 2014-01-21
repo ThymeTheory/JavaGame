@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Test/res/Audio/title theme.au&apos; to &apos;title_theme.au&apos;" description="Rename resource &apos;title theme.au&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="res/Audio/title theme.au" name="title_theme.au" stamp="1385502751200" updateReferences="true"/>
+</session>

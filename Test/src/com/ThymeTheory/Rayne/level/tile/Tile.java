@@ -6,6 +6,7 @@ import com.ThymeTheory.Rayne.level.tile.spawn_level.SpawnBricksTile;
 import com.ThymeTheory.Rayne.level.tile.spawn_level.SpawnFloorTile;
 import com.ThymeTheory.Rayne.level.tile.spawn_level.SpawnGrassTile;
 import com.ThymeTheory.Rayne.level.tile.spawn_level.SpawnStoneTile;
+import com.ThymeTheory.Rayne.level.tile.spawn_level.SpawnTreeTile;
 import com.ThymeTheory.Rayne.level.tile.spawn_level.SpawnWallTile;
 import com.ThymeTheory.Rayne.level.tile.spawn_level.SpawnWaterTile;
 
@@ -45,9 +46,16 @@ public class Tile {
 	public static Tile S_wall = new SpawnWallTile(Sprite.spawn_stonewall);
 	public static Tile S_water = new SpawnWaterTile(Sprite.spawn_water);
 	public static Tile S_bricks = new SpawnBricksTile(Sprite.spawn_colorwall);
+	
+	
+	public static Tile S_tree1 = new SpawnTreeTile(Sprite.spawn_tree1);
+	public static Tile S_tree2 = new SpawnTreeTile(Sprite.spawn_tree2);
+	public static Tile S_tree3 = new SpawnTreeTile(Sprite.spawn_tree3);
+	public static Tile S_tree4 = new SpawnTreeTile(Sprite.spawn_tree4);
 
 
-public static Tile voidTile = new VoidTile(Sprite.voidSprite);
+
+public static Tile voidTile = new VoidTile(Sprite.spawn_water);
 	
 	
 	
@@ -57,6 +65,11 @@ public static Tile voidTile = new VoidTile(Sprite.voidSprite);
 	public final static int col_s_water = 0xFF0D05FF;
 	public final static int col_s_floor = 0xFF7F0000;
 	public final static int col_s_stone = 0xFF003800;
+	
+	public final static int col_s_tree1 = 0xFF86FF84;
+	public final static int col_s_tree2 = 0xFF44FF3A;
+	public final static int col_s_tree3 = 0xFF0E7206;
+	public final static int col_s_tree4 = 0xFF041E01;
 
 	
 	
@@ -69,6 +82,10 @@ public static Tile voidTile = new VoidTile(Sprite.voidSprite);
 	}
 	
 	public boolean solid() {
+		return false;		
+	}
+	
+	public boolean Psolid() {
 		return false;		
 	}
 

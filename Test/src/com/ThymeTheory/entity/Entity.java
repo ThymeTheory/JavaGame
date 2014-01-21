@@ -24,7 +24,7 @@ public abstract class Entity {
 		removed = true;		
 	}
 	
-	public boolean isRemover() {
+	public boolean isRemoved() {
 		return removed;		
 	}
 	

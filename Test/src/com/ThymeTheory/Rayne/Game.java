@@ -8,12 +8,17 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
+import java.util.Random;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.JFrame;
 
 import levels.TileCoordinate;
 
 import com.ThymeTheory.Rayne.graphics.Screen;
+import com.ThymeTheory.Rayne.graphics.Sprite;
 import com.ThymeTheory.Rayne.input.Keyboard;
 import com.ThymeTheory.Rayne.input.Mouse;
 import com.ThymeTheory.Rayne.level.Level;
@@ -40,14 +45,18 @@ public class Game extends Canvas implements Runnable {
 	private Level level;
 	private boolean running = false;
 	
-	public int LevelSize = 256;
+	public int LevelSize = 80;
 	
-	public int TileSize = 32;
+	
+	
+	public int TileSize = 16;
 	
 	private Screen screen;
 	
 	private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 	private int[] pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
+	
+	
 	
 	public Game() {
 		Dimension size = new Dimension(width * scale, height * scale);
@@ -60,9 +69,11 @@ public class Game extends Canvas implements Runnable {
 		key = new Keyboard();
 		//level = new RandomLevel (LevelSize, LevelSize);
 		level =  Level.spawn;
-		TileCoordinate playerSpawn = new TileCoordinate(23, 64);
+		TileCoordinate playerSpawn = new TileCoordinate(38, 24);
 		player = new Player(playerSpawn.x, playerSpawn.y, key);
 		player.init(level);
+		
+
 				
 		Mouse mouse = new Mouse();
 		addKeyListener(key);
@@ -150,6 +161,7 @@ public class Game extends Canvas implements Runnable {
 		player.render(screen);
 
 		
+		
 		for (int i = 0; i < pixels.length; i++) {
 			pixels[i] = screen.pixels[i];
 			
@@ -164,7 +176,17 @@ public class Game extends Canvas implements Runnable {
 		g.drawString("x: " + player.x + ", Y: " + player.y, 1, 10);
 				
 		//g.fillRect(Mouse.getX() - 32, Mouse.getY() - 32, 64, 64);
+		
+		//Random random2 = new Random();
+		
+		if (key.taunt){
+			
+			g.drawString("Where did everyone go?", 550, 210);
+		}
+		
+		
 		if (Mouse.getButton() != -1) g.drawString("button: "  + Mouse.getButton(), 80, 80);
+		if (Mouse.getButton() == 3) g.drawString("pew pew pew... this is fun", 550, 210);
 		g.dispose();
 		bs.show();
 		

@@ -12,7 +12,7 @@ public class SpriteSheet {
 	public int[] pixels;
 	
 	public static SpriteSheet tiles = new SpriteSheet("/textures/sheets/spritesheet.png", 256);
-	public static SpriteSheet spawn_level = new SpriteSheet("/textures/sheets/spawn_level2.png", 128);
+	public static SpriteSheet spawn_level = new SpriteSheet("/textures/sheets/spawn_level22.png", 128);
 	public static SpriteSheet player = new SpriteSheet("/textures/sheets/player2.png", 128);
 	public static SpriteSheet projectile_wizard = new SpriteSheet("/textures/sheets/projectiles/wizard.png", 48);
 

@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.ThymeTheory.Rayne.graphics.Sprite;
 import com.ThymeTheory.entity.Entity;
+import com.ThymeTheory.entity.particle.Particle;
 import com.ThymeTheory.entity.projectile.Projectile;
 import com.ThymeTheory.entity.projectile.WizardProjectile;
 
@@ -14,8 +15,6 @@ public abstract class Mob extends Entity {
 	protected int dir = 0;
 	protected boolean moving = false;
 	
-	protected List<Projectile> projectiles = new ArrayList<Projectile>();
-
 	public boolean collision(int xa, int ya) {
 		boolean solid = false;
 		for (int c = 0; c < 4; c++) {
@@ -46,18 +45,19 @@ public abstract class Mob extends Entity {
 			// System.out.println("collision not detected!");
 			x += xa;
 			y += ya;
-		}
+		} 
+		
 
 	}
 
 	public void update() {
+		
 	}
 	
 	protected void shoot(int x, int y, double dir){
 		//dir *= 180 / Math.PI;
 		Projectile p = new WizardProjectile(x, y, dir);
-		projectiles.add(p);
-		level.add(p);
+		level.addProjectile(p);
 		
 		
 		

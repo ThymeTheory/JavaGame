@@ -1,0 +1,16 @@
+package com.ThymeTheory.entity.particle;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.ThymeTheory.entity.Entity;
+
+public class Particle extends Entity {
+	
+	private List<Particle> particles = new ArrayList<Particle>();
+	
+	public Particle(int x, int y, int life, int amount) {
+		
+	}
+
+}
